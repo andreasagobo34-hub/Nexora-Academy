@@ -3,76 +3,87 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Nexora Academy | Ghana Government Syllabus Quiz App</title>
+  <title>Nexora Academy | Ghana Syllabus Quiz Platform</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Tailwind CDN -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Swiper -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-
-  <!-- GSAP -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-
-  <!-- ScrollReveal -->
-  <script src="https://unpkg.com/scrollreveal"></script>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    body { font-family: 'Poppins', sans-serif; }
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
   </style>
 </head>
-<body class="bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900 text-white overflow-x-hidden">
 
-<!-- Navbar -->
-<nav class="flex justify-between items-center p-6">
-  <h1 class="text-2xl font-bold tracking-wide">Nexora Academy</h1>
-  <div class="space-x-6">
-    <a href="index.html" class="hover:text-yellow-400">Home</a>
-    <a href="forms.html" class="hover:text-yellow-400">Forms</a>
-    <a href="login.html" class="bg-yellow-400 text-black px-4 py-2 rounded-lg font-semibold hover:bg-yellow-300">Login</a>
-  </div>
-</nav>
+<body class="bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900 text-white">
 
-<!-- Hero Section -->
-<section class="text-center py-24 px-6">
-  <h2 class="text-5xl font-extrabold mb-6 leading-tight">
-    Master the New Ghana Government Syllabus
-  </h2>
-  <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-    Interactive quizzes, syllabus-based learning, and structured revision for Form 1, Form 2 & Form 3 students.
-  </p>
-  <a href="forms.html" class="bg-yellow-400 text-black px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 transition">
-    Start Learning
-  </a>
-</section>
+  <!-- Navbar -->
+  <nav class="flex justify-between items-center p-6">
+    <h1 class="text-2xl font-bold">Nexora Academy</h1>
+    <a href="login.html"
+      class="bg-white text-indigo-900 px-4 py-2 rounded-lg font-semibold hover:bg-gray-200 transition">
+      Login
+    </a>
+  </nav>
 
-<!-- Features -->
-<section class="py-20 px-6 bg-white text-gray-900 rounded-t-3xl">
-  <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+  <!-- Hero Section -->
+  <section class="flex flex-col items-center justify-center text-center px-6 mt-20">
 
-    <div class="p-8 bg-gray-100 rounded-2xl shadow-lg hover:shadow-2xl transition">
-      <h3 class="text-xl font-bold mb-4">📘 Government Approved Content</h3>
-      <p>Aligned with Ghana's new education curriculum.</p>
+    <h2 class="text-4xl md:text-6xl font-bold mb-6">
+      Master the New Ghana Government Syllabus
+    </h2>
+
+    <p class="text-lg md:text-xl max-w-2xl mb-8 text-gray-200">
+      Interactive quizzes, structured by Form 1, Form 2, and Form 3.
+      Learn smarter. Practice better. Achieve excellence.
+    </p>
+
+    <div class="flex gap-4 flex-wrap justify-center">
+      <a href="login.html"
+        class="bg-indigo-500 hover:bg-indigo-600 px-6 py-3 rounded-lg text-lg font-semibold transition">
+        Get Started
+      </a>
+
+      <a href="forms.html"
+        class="border border-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-white hover:text-indigo-900 transition">
+        Explore Forms
+      </a>
     </div>
 
-    <div class="p-8 bg-gray-100 rounded-2xl shadow-lg hover:shadow-2xl transition">
-      <h3 class="text-xl font-bold mb-4">📝 Smart Quizzes</h3>
-      <p>Practice topic-based and full syllabus quizzes.</p>
+  </section>
+
+  <!-- Features -->
+  <section class="mt-32 px-6 pb-20">
+    <h3 class="text-3xl font-bold text-center mb-12">Why Nexora Academy?</h3>
+
+    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+
+      <div class="bg-white text-indigo-900 p-6 rounded-xl shadow-xl">
+        <h4 class="font-bold text-xl mb-3">Updated Ghana Curriculum</h4>
+        <p>All quizzes follow the latest government-approved syllabus.</p>
+      </div>
+
+      <div class="bg-white text-indigo-900 p-6 rounded-xl shadow-xl">
+        <h4 class="font-bold text-xl mb-3">Form-Based Structure</h4>
+        <p>Structured into Form 1, Form 2, and Form 3 for clarity and progression.</p>
+      </div>
+
+      <div class="bg-white text-indigo-900 p-6 rounded-xl shadow-xl">
+        <h4 class="font-bold text-xl mb-3">Smart Quiz System</h4>
+        <p>Timed quizzes, instant scoring, and performance tracking.</p>
+      </div>
+
     </div>
+  </section>
 
-    <div class="p-8 bg-gray-100 rounded-2xl shadow-lg hover:shadow-2xl transition">
-      <h3 class="text-xl font-bold mb-4">📊 Performance Tracking</h3>
-      <p>Monitor your academic progress easily.</p>
-    </div>
-
-  </div>
-</section>
-
-<script>
-  gsap.from("h2", {y: -50, opacity: 0, duration: 1});
-  ScrollReveal().reveal('.p-8', { delay: 300, distance: '50px', origin: 'bottom', interval: 200 });
-</script>
+  <!-- Footer -->
+  <footer class="text-center py-6 border-t border-white/20">
+    © 2026 Nexora Academy | Built for Excellence 🇬🇭
+  </footer>
 
 </body>
 </html>
