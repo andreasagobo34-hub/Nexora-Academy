@@ -1,47 +1,70 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Login | Nexora Academy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 
-<body class="bg-gradient-to-br from-indigo-800 to-purple-900 flex items-center justify-center h-screen text-white">
+<body class="bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900 flex items-center justify-center min-h-screen text-white">
 
-<div class="bg-white text-gray-900 p-10 rounded-2xl shadow-2xl w-full max-w-md">
+<div class="bg-white text-gray-900 p-10 rounded-2xl shadow-2xl w-full max-w-md relative">
 
-  <h2 class="text-3xl font-bold mb-6 text-center">Login to Nexora</h2>
+  <h2 class="text-3xl font-bold text-center mb-6">Nexora Academy Login</h2>
 
-  <input id="email" type="email" placeholder="Email" class="w-full p-3 mb-4 border rounded-lg">
-  <input id="password" type="password" placeholder="Password" class="w-full p-3 mb-4 border rounded-lg">
+  <!-- Email -->
+  <input id="email" type="email" placeholder="Email"
+    class="w-full p-3 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
 
-  <button onclick="emailLogin()" class="w-full bg-indigo-600 text-white p-3 rounded-lg mb-4 hover:bg-indigo-700">
+  <!-- Password -->
+  <input id="password" type="password" placeholder="Password"
+    class="w-full p-3 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+
+  <button onclick="loginWithEmail()"
+    class="w-full bg-indigo-600 text-white p-3 rounded-lg mb-4 hover:bg-indigo-700 transition">
     Login with Email
   </button>
 
-  <button onclick="googleLogin()" class="w-full bg-red-500 text-white p-3 rounded-lg mb-4 hover:bg-red-600">
-    Login with Google
+  <div class="text-center text-gray-500 mb-4">OR</div>
+
+  <button onclick="loginWithGoogle()"
+    class="w-full bg-red-500 text-white p-3 rounded-lg mb-4 hover:bg-red-600 transition">
+    Continue with Google
   </button>
 
-  <input id="phone" type="text" placeholder="Phone Number (+233...)" class="w-full p-3 mb-4 border rounded-lg">
+  <input id="phone" type="text" placeholder="Phone (+233...)"
+    class="w-full p-3 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
 
-  <div id="recaptcha-container"></div>
+  <div id="recaptcha-container" class="mb-4"></div>
 
-  <button onclick="phoneLogin()" class="w-full bg-green-500 text-white p-3 rounded-lg hover:bg-green-600">
+  <button onclick="loginWithPhone()"
+    class="w-full bg-green-500 text-white p-3 rounded-lg hover:bg-green-600 transition">
     Login with Phone
   </button>
 
+  <p id="message" class="text-sm text-center mt-4 text-red-500"></p>
+
 </div>
 
-<!-- Firebase SDK -->
+<!-- Firebase Script -->
 <script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
-import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, RecaptchaVerifier, signInWithPhoneNumber } 
-from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { getAuth,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+  RecaptchaVerifier,
+  signInWithPhoneNumber,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAo-EDgZOxuUY_YUKijv2mRPiyZv-ABioY",
@@ -54,40 +77,87 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 const auth = getAuth(app);
 
-window.emailLogin = function() {
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
+const message = document.getElementById("message");
+
+
+// 🔹 Email Login
+window.loginWithEmail = function () {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
 
   signInWithEmailAndPassword(auth, email, password)
-    .then(() => window.location.href = "forms.html")
-    .catch(err => alert(err.message));
-}
+    .then((userCredential) => {
+      const user = userCredential.user;
+      saveUser(user);
+    })
+    .catch((error) => {
+      message.innerText = error.message;
+    });
+};
 
-window.googleLogin = function() {
+
+// 🔹 Google Login
+window.loginWithGoogle = function () {
   const provider = new GoogleAuthProvider();
-  signInWithPopup(auth, provider)
-    .then(() => window.location.href = "forms.html")
-    .catch(err => alert(err.message));
-}
 
-window.phoneLogin = function() {
-  const phoneNumber = document.getElementById('phone').value;
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      const user = result.user;
+      saveUser(user);
+    })
+    .catch((error) => {
+      message.innerText = error.message;
+    });
+};
+
+
+// 🔹 Phone Login
+window.loginWithPhone = function () {
+  const phoneNumber = document.getElementById("phone").value;
 
   window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
-    size: 'normal'
+    size: 'normal',
   });
 
   signInWithPhoneNumber(auth, phoneNumber, window.recaptchaVerifier)
-    .then(result => {
-      const code = prompt("Enter OTP");
-      return result.confirm(code);
+    .then((confirmationResult) => {
+      const code = prompt("Enter OTP sent to your phone:");
+      return confirmationResult.confirm(code);
     })
-    .then(() => window.location.href = "forms.html")
-    .catch(err => alert(err.message));
+    .then((userCredential) => {
+      const user = userCredential.user;
+      saveUser(user);
+    })
+    .catch((error) => {
+      message.innerText = error.message;
+    });
+};
+
+
+// 🔹 Save UID & Redirect
+function saveUser(user) {
+  console.log("User UID:", user.uid);
+
+  localStorage.setItem("nexoraUID", user.uid);
+  localStorage.setItem("nexoraEmail", user.email || "Phone User");
+
+  window.location.href = "forms.html";
 }
+
+
+// 🔹 Auto Redirect if Already Logged In
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    localStorage.setItem("nexoraUID", user.uid);
+    window.location.href = "forms.html";
+  }
+});
+
+
+// Animation
+gsap.from(".bg-white", { y: 50, opacity: 0, duration: 1 });
 
 </script>
 
