@@ -98,23 +98,57 @@ window.loginWithEmail = function () {
 };
 
 
-// 🔹 GOOGLE LOGIN (REDIRECT SAFE)
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getAuth,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithRedirect,
+  getRedirectResult,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAo-EDgZOxuUY_YUKijv2mRPiyZv-ABioY",
+  authDomain: "nexora-academy-c4fd9.firebaseapp.com",
+  projectId: "nexora-academy-c4fd9",
+  storageBucket: "nexora-academy-c4fd9.firebasestorage.app",
+  messagingSenderId: "56132609079",
+  appId: "1:56132609079:web:a162000d02a9ea20a98bb2"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+// GOOGLE LOGIN (Redirect)
 window.loginWithGoogle = function () {
   const provider = new GoogleAuthProvider();
   signInWithRedirect(auth, provider);
 };
 
-
-// Handle Google Redirect Result
+// VERY IMPORTANT: Handle redirect result FIRST
 getRedirectResult(auth)
   .then((result) => {
-    if (result) {
-      saveUser(result.user);
+    if (result && result.user) {
+      localStorage.setItem("nexoraUID", result.user.uid);
+      window.location.href = "forms.html";
     }
   })
   .catch((error) => {
-    console.log(error);
+    console.log("Redirect error:", error);
   });
+
+// BACKUP: If redirect result fails, this will still work
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    localStorage.setItem("nexoraUID", user.uid);
+    window.location.href = "forms.html";
+  }
+});
+
+</script>
+
 
 
 // 🔹 PHONE LOGIN
