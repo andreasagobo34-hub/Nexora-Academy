@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Form 3 Subjects | Nexora Academy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <!-- ScrollReveal -->
+  <script src="https://unpkg.com/scrollreveal"></script>
+
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+  </style>
+</head>
+
+<body class="bg-gradient-to-br from-black via-indigo-950 to-purple-950 text-white min-h-screen">
+
+<!-- Navbar -->
+<nav class="flex justify-between items-center p-6">
+  <h1 class="text-2xl font-bold tracking-wide">Nexora Academy</h1>
+  <a href="forms.html" class="bg-yellow-400 text-black px-4 py-2 rounded-lg font-semibold hover:bg-yellow-300 transition">
+    Back
+  </a>
+</nav>
+
+<!-- Header -->
+<section class="text-center py-12 px-6">
+  <h2 class="text-4xl md:text-5xl font-extrabold mb-4">
+    Form 3 Subjects
+  </h2>
+  <p class="text-gray-300 text-lg max-w-2xl mx-auto">
+    Final Year Preparation – Master the Ghana Government Syllabus with Advanced Quiz Practice.
+  </p>
+</section>
+
+<!-- Subjects Grid -->
+<section class="px-6 pb-20">
+  <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+
+    <!-- Subject Cards -->
+
+    <a href="subject.html?form=3&subject=Mathematics" class="subject-card card"> <h3>Mathematics</h3> </a>
+    <a href="subject.html?form=3&subject=Biology" class="subject-card card"> <h3>Biology</h3> </a>
+    <a href="subject.html?form=3&subject=Chemistry" class="subject-card card"> <h3>Chemistry</h3> </a>
+    <a href="subject.html?form=3&subject=Physics" class="subject-card card"> <h3>Physics</h3> </a>
+    <a href="subject.html?form=3&subject=Government" class="subject-card card"> <h3>Government</h3> </a>
+    <a href="subject.html?form=3&subject=Geography" class="subject-card card"> <h3>Geography</h3> </a>
+    <a href="subject.html?form=3&subject=Computer Science" class="subject-card card"> <h3>Computer Science</h3> </a>
+    <a href="subject.html?form=3&subject=ICT" class="subject-card card"> <h3>ICT</h3> </a>
+    <a href="subject.html?form=3&subject=Art & Design Studio" class="subject-card card"> <h3>Art & Design Studio</h3> </a>
+    <a href="subject.html?form=3&subject=Additional Mathematics" class="subject-card card"> <h3>Additional Mathematics</h3> </a>
+    <a href="subject.html?form=3&subject=Economics" class="subject-card card"> <h3>Economics</h3> </a>
+    <a href="subject.html?form=3&subject=Food & Nutrition" class="subject-card card"> <h3>Food & Nutrition</h3> </a>
+    <a href="subject.html?form=3&subject=P.E.H Core" class="subject-card card"> <h3>P.E.H Core</h3> </a>
+    <a href="subject.html?form=3&subject=P.E.H Elective" class="subject-card card"> <h3>P.E.H Elective</h3> </a>
+    <a href="subject.html?form=3&subject=French" class="subject-card card"> <h3>French</h3> </a>
+    <a href="subject.html?form=3&subject=Business Management" class="subject-card card"> <h3>Business Management</h3> </a>
+
+  </div>
+</section>
+
+<!-- Styling -->
+<style>
+  .card {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(15px);
+    padding: 1.8rem;
+    border-radius: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  }
+
+  .card:hover {
+    transform: translateY(-8px) scale(1.05);
+    background: linear-gradient(135deg, #facc15, #f97316);
+    color: black;
+  }
+</style>
+
+<!-- Animations -->
+<script>
+  gsap.from("h2", {y: -60, opacity: 0, duration: 1});
+  ScrollReveal().reveal('.subject-card', {
+    interval: 100,
+    distance: '50px',
+    origin: 'bottom'
+  });
+</script>
+
+</body>
+</html>
