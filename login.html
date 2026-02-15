@@ -149,30 +149,6 @@ onAuthStateChanged(auth, (user) => {
 
 </script>
 
-
-
-// 🔹 PHONE LOGIN
-window.loginWithPhone = function () {
-  const phoneNumber = document.getElementById("phone").value;
-
-  window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
-    size: 'normal',
-  });
-
-  signInWithPhoneNumber(auth, phoneNumber, window.recaptchaVerifier)
-    .then((confirmationResult) => {
-      const code = prompt("Enter OTP sent to your phone:");
-      return confirmationResult.confirm(code);
-    })
-    .then((userCredential) => {
-      saveUser(userCredential.user);
-    })
-    .catch((error) => {
-      message.innerText = error.message;
-    });
-};
-
-
 // 🔹 SAVE USER + REDIRECT
 function saveUser(user) {
   localStorage.setItem("nexoraUID", user.uid);
