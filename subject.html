@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Subject | Nexora Academy</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+body { font-family: 'Poppins', sans-serif; }
+</style>
+
+</head>
+
+<body class="bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900 text-white min-h-screen">
+
+<!-- Navbar -->
+<nav class="flex justify-between items-center p-6">
+  <h1 class="text-2xl font-bold">Nexora Academy</h1>
+  <a href="forms.html" class="bg-white text-indigo-900 px-4 py-2 rounded-lg font-semibold">
+    Back to Forms
+  </a>
+</nav>
+
+<!-- Subject Header -->
+<section class="text-center mt-10 px-6">
+  <h2 id="subjectTitle" class="text-4xl font-bold mb-4"></h2>
+  <p class="text-gray-200">Explore books and take quizzes based on the new Ghana syllabus.</p>
+</section>
+
+<!-- Books Section -->
+<section class="mt-16 px-6 max-w-5xl mx-auto">
+  <h3 class="text-2xl font-bold mb-6 text-center">📚 Recommended Books</h3>
+
+  <div id="booksContainer" class="grid md:grid-cols-3 gap-6">
+    <!-- Books will load here -->
+  </div>
+</section>
+
+<!-- Quiz Section -->
+<section class="mt-16 text-center pb-20">
+  <a id="quizBtn"
+     class="bg-indigo-500 hover:bg-indigo-600 px-8 py-3 rounded-lg text-lg font-semibold transition">
+     Start Quiz
+  </a>
+</section>
+
+<script>
+
+// Get URL parameters
+const params = new URLSearchParams(window.location.search);
+const form = params.get("form");
+const subject = params.get("subject");
+
+// Display title
+document.getElementById("subjectTitle").innerText =
+  `Form ${form} – ${subject}`;
+
+// Example books (you will replace with uploaded books later)
+const booksContainer = document.getElementById("booksContainer");
+
+const sampleBooks = [
+  "Core Textbook",
+  "Practice Workbook",
+  "Past Questions Guide"
+];
+
+sampleBooks.forEach(book => {
+  const div = document.createElement("div");
+  div.className = "bg-white text-indigo-900 p-6 rounded-xl shadow-xl text-center";
+  div.innerHTML = `
+    <h4 class="font-bold mb-2">${book}</h4>
+    <p class="mb-4">Official Ghana syllabus material.</p>
+    <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg">
+      View Book
+    </button>
+  `;
+  booksContainer.appendChild(div);
+});
+
+// Quiz link
+document.getElementById("quizBtn").href =
+  `quiz.html?form=${form}&subject=${subject}`;
+
+</script>
+
+</body>
+</html>
