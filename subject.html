@@ -20,120 +20,122 @@ body { font-family: 'Poppins', sans-serif; }
 <!-- Navbar -->
 <nav class="flex justify-between items-center p-6">
   <h1 class="text-2xl font-bold">Nexora Academy</h1>
-  <a href="forms.html" class="bg-white text-indigo-900 px-4 py-2 rounded-lg font-semibold">
-    Back to Forms
+  <a href="forms.html"
+     class="bg-white text-indigo-900 px-4 py-2 rounded-lg font-semibold">
+     Back to Forms
   </a>
 </nav>
 
 <!-- Subject Header -->
 <section class="text-center mt-10 px-6">
   <h2 id="subjectTitle" class="text-4xl font-bold mb-4"></h2>
-  <p class="text-gray-200">Explore books and take quizzes based on the new Ghana syllabus.</p>
+  <p class="text-gray-200">
+    Explore books and take quizzes based on the new Ghana Government syllabus.
+  </p>
 </section>
 
 <!-- Books Section -->
-<script>
+<section class="mt-16 px-6 max-w-6xl mx-auto">
 
-// Get URL parameters
-const params = new URLSearchParams(window.location.search);
-const form = params.get("form");
-const subject = params.get("subject");
+  <h3 class="text-2xl font-bold mb-10 text-center">📚 Mathematics Books</h3>
 
-// Display title
-document.getElementById("subjectTitle").innerText =
-  `Form ${form} – ${subject}`;
+  <div class="grid md:grid-cols-3 gap-8">
 
-const booksContainer = document.getElementById("booksContainer");
-
-// 🔥 Define book paths per subject
-const books = {
-  "1-Mathematics": [
-    {
-      title: "Core Mathematics Textbook",
-      file: "assets/books/form1/mathematics/core-textbook.pdf"
-    },
-    {
-      title: "Mathematics Workbook",
-      file: "assets/books/form1/mathematics/workbook.pdf"
-    }
-  ]
-};
-
-const key = `${form}-${subject}`;
-const subjectBooks = books[key] || [];
-
-if (subjectBooks.length === 0) {
-  booksContainer.innerHTML = `
-    <p class="text-center col-span-3 text-gray-300">
-      No books uploaded yet for this subject.
-    </p>
-  `;
-} else {
-
-  subjectBooks.forEach(book => {
-    const div = document.createElement("div");
-    div.className = "bg-white text-indigo-900 p-6 rounded-xl shadow-xl text-center";
-
-    div.innerHTML = `
-      <h4 class="font-bold mb-2">${book.title}</h4>
-      <p class="mb-4">Official Ghana syllabus material.</p>
-      <a href="book-viewer.html?file=${book.file}"_blank"
-         class="bg-indigo-600 text-white px-4 py-2 rounded-lg">
+    <div class="bg-white text-indigo-900 p-6 rounded-xl shadow-xl text-center">
+      <h4 class="font-bold mb-3">Algebraic Expression and Factorisation</h4>
+      <a href="book-viewer.html?file=assets/books/form1/mathematics/Algebraic Expression and Factorisation.pdf"
+         class="bg-indigo-600 text-white px-4 py-2 rounded-lg inline-block">
          View Book
       </a>
-    `;
+    </div>
 
-    booksContainer.appendChild(div);
-  });
-}
+    <div class="bg-white text-indigo-900 p-6 rounded-xl shadow-xl text-center">
+      <h4 class="font-bold mb-3">Angles and Pythagorean Theorem</h4>
+      <a href="book-viewer.html?file=assets/books/form1/mathematics/Angles and Pythagorean Theorem.pdf"
+         class="bg-indigo-600 text-white px-4 py-2 rounded-lg inline-block">
+         View Book
+      </a>
+    </div>
 
-// Quiz button
-document.getElementById("quizBtn").href =
-  `quiz.html?form=${form}&subject=${subject}`;
+    <div class="bg-white text-indigo-900 p-6 rounded-xl shadow-xl text-center">
+      <h4 class="font-bold mb-3">Data Organisation, Analysis and Presentation</h4>
+      <a href="book-viewer.html?file=assets/books/form1/mathematics/Data Organisation,Analysis and Presentation.pdf"
+         class="bg-indigo-600 text-white px-4 py-2 rounded-lg inline-block">
+         View Book
+      </a>
+    </div>
 
-</script>
->
+    <div class="bg-white text-indigo-900 p-6 rounded-xl shadow-xl text-center">
+      <h4 class="font-bold mb-3">Fractions and Percentages</h4>
+      <a href="book-viewer.html?file=assets/books/form1/mathematics/Fractions and Percentages.pdf"
+         class="bg-indigo-600 text-white px-4 py-2 rounded-lg inline-block">
+         View Book
+      </a>
+    </div>
+
+    <div class="bg-white text-indigo-900 p-6 rounded-xl shadow-xl text-center">
+      <h4 class="font-bold mb-3">Linear Equations, Relations and Functions</h4>
+      <a href="book-viewer.html?file=assets/books/form1/mathematics/Linear Equations ,Relations and Functions.pdf"
+         class="bg-indigo-600 text-white px-4 py-2 rounded-lg inline-block">
+         View Book
+      </a>
+    </div>
+
+    <div class="bg-white text-indigo-900 p-6 rounded-xl shadow-xl text-center">
+      <h4 class="font-bold mb-3">Number Set</h4>
+      <a href="book-viewer.html?file=assets/books/form1/mathematics/Number Set.pdf"
+         class="bg-indigo-600 text-white px-4 py-2 rounded-lg inline-block">
+         View Book
+      </a>
+    </div>
+
+    <div class="bg-white text-indigo-900 p-6 rounded-xl shadow-xl text-center">
+      <h4 class="font-bold mb-3">Perimeter, Area and Volume</h4>
+      <a href="book-viewer.html?file=assets/books/form1/mathematics/Perimeter, Area and Volume.pdf"
+         class="bg-indigo-600 text-white px-4 py-2 rounded-lg inline-block">
+         View Book
+      </a>
+    </div>
+
+    <div class="bg-white text-indigo-900 p-6 rounded-xl shadow-xl text-center">
+      <h4 class="font-bold mb-3">Probability of Independent Events</h4>
+      <a href="book-viewer.html?file=assets/books/form1/mathematics/Probability of independent events.pdf"
+         class="bg-indigo-600 text-white px-4 py-2 rounded-lg inline-block">
+         View Book
+      </a>
+    </div>
+
+    <div class="bg-white text-indigo-900 p-6 rounded-xl shadow-xl text-center">
+      <h4 class="font-bold mb-3">Vectors and Trigonometry</h4>
+      <a href="book-viewer.html?file=assets/books/form1/mathematics/Vectors and Trigonometry.pdf"
+         class="bg-indigo-600 text-white px-4 py-2 rounded-lg inline-block">
+         View Book
+      </a>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- Quiz Button -->
+<section class="mt-16 text-center pb-20">
+  <a id="quizBtn"
+     class="bg-indigo-500 hover:bg-indigo-600 px-8 py-3 rounded-lg text-lg font-semibold transition">
      Start Quiz
   </a>
 </section>
 
 <script>
-
-// Get URL parameters
+// Dynamic Title + Quiz Link
 const params = new URLSearchParams(window.location.search);
 const form = params.get("form");
 const subject = params.get("subject");
 
-// Display title
 document.getElementById("subjectTitle").innerText =
   `Form ${form} – ${subject}`;
 
-// Example books (you will replace with uploaded books later)
-const booksContainer = document.getElementById("booksContainer");
-
-const sampleBooks = [
-  "Textbook",
-  "Practice Workbook",
-  "Past Questions"
-];
-
-sampleBooks.forEach(book => {
-  const div = document.createElement("div");
-  div.className = "bg-white text-indigo-900 p-6 rounded-xl shadow-xl text-center";
-  div.innerHTML = `
-    <h4 class="font-bold mb-2">${book}</h4>
-    <p class="mb-4">Official Ghana syllabus material.</p>
-    <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg">
-      View Book
-    </button>
-  `;
-  booksContainer.appendChild(div);
-});
-
-// Quiz link
 document.getElementById("quizBtn").href =
   `quiz.html?form=${form}&subject=${subject}`;
-
 </script>
 
 </body>
