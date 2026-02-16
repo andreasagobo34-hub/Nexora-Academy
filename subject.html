@@ -3,8 +3,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Subject | Nexora Academy</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Subject | Nexora Academy</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
@@ -12,123 +12,130 @@
 <style>
 body { font-family: 'Poppins', sans-serif; }
 </style>
-
 </head>
 
-<body class="bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900 text-white min-h-screen">
+<body class="bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900 min-h-screen text-white">
 
-<!-- Navbar -->
+<!-- NAVBAR -->
 <nav class="flex justify-between items-center p-6">
   <h1 class="text-2xl font-bold">Nexora Academy</h1>
   <a href="forms.html"
-     class="bg-white text-indigo-900 px-4 py-2 rounded-lg font-semibold">
-     Back to Forms
+     class="bg-white text-indigo-900 px-4 py-2 rounded-lg font-semibold hover:bg-gray-200 transition">
+     Back
   </a>
 </nav>
 
-<!-- Subject Header -->
-<section class="text-center mt-10 px-6">
-  <h2 id="subjectTitle" class="text-4xl font-bold mb-4"></h2>
-  <p class="text-gray-200">
-    Explore books and take quizzes based on the new Ghana Government syllabus.
-  </p>
+<!-- SUBJECT HEADER -->
+<section class="text-center mt-8">
+  <h2 id="subjectTitle" class="text-4xl font-bold mb-2"></h2>
+  <p class="text-gray-200">Access official textbooks and take quizzes.</p>
 </section>
 
-<!-- Books Section -->
+<!-- BOOKS GRID -->
 <section class="mt-16 px-6 max-w-6xl mx-auto">
 
-  <h3 class="text-2xl font-bold mb-10 text-center">📚 Mathematics Books</h3>
+  <h3 class="text-2xl font-bold text-center mb-10">📚 Mathematics Books</h3>
 
   <div class="grid md:grid-cols-3 gap-8">
 
-    <div class="bg-white text-indigo-900 p-6 rounded-xl shadow-xl text-center">
+    <!-- BOOK CARD TEMPLATE -->
+
+    <div class="bg-white text-indigo-900 p-6 rounded-xl shadow-xl text-center hover:scale-105 transition">
       <h4 class="font-bold mb-3">Algebraic Expression and Factorisation</h4>
-      <a href="book-viewer.html?file=assets/books/form1/mathematics/algebraic-expression-and-factorisation.pdf"
-         class="bg-indigo-600 text-white px-4 py-2 rounded-lg inline-block">
+      <a href="assets/books/form1/mathematics/algebraic-expression-and-factorisation.pdf"
+         target="_blank"
+         class="bg-indigo-600 text-white px-4 py-2 rounded-lg inline-block hover:bg-indigo-700 transition">
          View Book
       </a>
     </div>
 
-    <div class="bg-white text-indigo-900 p-6 rounded-xl shadow-xl text-center">
+    <div class="bg-white text-indigo-900 p-6 rounded-xl shadow-xl text-center hover:scale-105 transition">
       <h4 class="font-bold mb-3">Angles and Pythagorean Theorem</h4>
-      <a href="book-viewer.html?file=assets/books/form1/mathematics/angles-and-pythagorean-theorem.pdf"
-         class="bg-indigo-600 text-white px-4 py-2 rounded-lg inline-block">
+      <a href="assets/books/form1/mathematics/angles-and-pythagorean-theorem.pdf"
+         target="_blank"
+         class="bg-indigo-600 text-white px-4 py-2 rounded-lg inline-block hover:bg-indigo-700 transition">
          View Book
       </a>
     </div>
 
-    <div class="bg-white text-indigo-900 p-6 rounded-xl shadow-xl text-center">
+    <div class="bg-white text-indigo-900 p-6 rounded-xl shadow-xl text-center hover:scale-105 transition">
       <h4 class="font-bold mb-3">Data Organisation, Analysis and Presentation</h4>
-      <a href="book-viewer.html?file=assets/books/form1/mathematics/data-organisation-analysis-and-presentation.pdf"
-         class="bg-indigo-600 text-white px-4 py-2 rounded-lg inline-block">
+      <a href="assets/books/form1/mathematics/data-organisation-analysis-and-presentation.pdf"
+         target="_blank"
+         class="bg-indigo-600 text-white px-4 py-2 rounded-lg inline-block hover:bg-indigo-700 transition">
          View Book
       </a>
     </div>
 
-    <div class="bg-white text-indigo-900 p-6 rounded-xl shadow-xl text-center">
+    <div class="bg-white text-indigo-900 p-6 rounded-xl shadow-xl text-center hover:scale-105 transition">
       <h4 class="font-bold mb-3">Fractions and Percentages</h4>
-      <a href="book-viewer.html?file=assets/books/form1/mathematics/fractions-and-percentages.pdf"
-         class="bg-indigo-600 text-white px-4 py-2 rounded-lg inline-block">
+      <a href="assets/books/form1/mathematics/fractions-and-percentages.pdf"
+         target="_blank"
+         class="bg-indigo-600 text-white px-4 py-2 rounded-lg inline-block hover:bg-indigo-700 transition">
          View Book
       </a>
     </div>
 
-    <div class="bg-white text-indigo-900 p-6 rounded-xl shadow-xl text-center">
+    <div class="bg-white text-indigo-900 p-6 rounded-xl shadow-xl text-center hover:scale-105 transition">
       <h4 class="font-bold mb-3">Linear Equations, Relations and Functions</h4>
-      <a href="book-viewer.html?file=assets/books/form1/mathematics/linear-equations-relations-and-functions.pdf"
-         class="bg-indigo-600 text-white px-4 py-2 rounded-lg inline-block">
+      <a href="assets/books/form1/mathematics/linear-equations-relations-and-functions.pdf"
+         target="_blank"
+         class="bg-indigo-600 text-white px-4 py-2 rounded-lg inline-block hover:bg-indigo-700 transition">
          View Book
       </a>
     </div>
 
-    <div class="bg-white text-indigo-900 p-6 rounded-xl shadow-xl text-center">
+    <div class="bg-white text-indigo-900 p-6 rounded-xl shadow-xl text-center hover:scale-105 transition">
       <h4 class="font-bold mb-3">Number Set</h4>
-      <a href="book-viewer.html?file=assets/books/form1/mathematics/number-set.pdf"
-         class="bg-indigo-600 text-white px-4 py-2 rounded-lg inline-block">
+      <a href="assets/books/form1/mathematics/number-set.pdf"
+         target="_blank"
+         class="bg-indigo-600 text-white px-4 py-2 rounded-lg inline-block hover:bg-indigo-700 transition">
          View Book
       </a>
     </div>
 
-    <div class="bg-white text-indigo-900 p-6 rounded-xl shadow-xl text-center">
+    <div class="bg-white text-indigo-900 p-6 rounded-xl shadow-xl text-center hover:scale-105 transition">
       <h4 class="font-bold mb-3">Perimeter, Area and Volume</h4>
-      <a href="book-viewer.html?file=assets/books/form1/mathematics/perimeter-area-and-volume.pdf"
-         class="bg-indigo-600 text-white px-4 py-2 rounded-lg inline-block">
+      <a href="assets/books/form1/mathematics/perimeter-area-and-volume.pdf"
+         target="_blank"
+         class="bg-indigo-600 text-white px-4 py-2 rounded-lg inline-block hover:bg-indigo-700 transition">
          View Book
       </a>
     </div>
 
-    <div class="bg-white text-indigo-900 p-6 rounded-xl shadow-xl text-center">
+    <div class="bg-white text-indigo-900 p-6 rounded-xl shadow-xl text-center hover:scale-105 transition">
       <h4 class="font-bold mb-3">Probability of Independent Events</h4>
-      <a href="book-viewer.html?file=assets/books/form1/mathematics/probability-of-independent-events.pdf"
-         class="bg-indigo-600 text-white px-4 py-2 rounded-lg inline-block">
+      <a href="assets/books/form1/mathematics/probability-of-independent-events.pdf"
+         target="_blank"
+         class="bg-indigo-600 text-white px-4 py-2 rounded-lg inline-block hover:bg-indigo-700 transition">
          View Book
       </a>
     </div>
 
-    <div class="bg-white text-indigo-900 p-6 rounded-xl shadow-xl text-center">
+    <div class="bg-white text-indigo-900 p-6 rounded-xl shadow-xl text-center hover:scale-105 transition">
       <h4 class="font-bold mb-3">Vectors and Trigonometry</h4>
-      <a href="book-viewer.html?file=assets/books/form1/mathematics/vectors-and-trigonometry.pdf"
-         class="bg-indigo-600 text-white px-4 py-2 rounded-lg inline-block">
+      <a href="assets/books/form1/mathematics/vectors-and-trigonometry.pdf"
+         target="_blank"
+         class="bg-indigo-600 text-white px-4 py-2 rounded-lg inline-block hover:bg-indigo-700 transition">
          View Book
       </a>
     </div>
 
   </div>
-
 </section>
 
-<!-- Quiz Button -->
-<section class="mt-16 text-center pb-20">
+<!-- QUIZ BUTTON -->
+<section class="text-center mt-16 pb-16">
   <a id="quizBtn"
-     class="bg-indigo-500 hover:bg-indigo-600 px-8 py-3 rounded-lg text-lg font-semibold transition">
+     class="bg-green-500 hover:bg-green-600 px-8 py-3 rounded-lg text-lg font-semibold transition">
      Start Quiz
   </a>
 </section>
 
 <script>
 const params = new URLSearchParams(window.location.search);
-const form = params.get("form");
-const subject = params.get("subject");
+const form = params.get("form") || "1";
+const subject = params.get("subject") || "Mathematics";
 
 document.getElementById("subjectTitle").innerText =
   `Form ${form} – ${subject}`;
@@ -139,3 +146,4 @@ document.getElementById("quizBtn").href =
 
 </body>
 </html>
+
