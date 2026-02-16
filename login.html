@@ -2,147 +2,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Nexora Academy | Login</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login | Nexora Academy</title>
 
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+body { font-family: 'Poppins', sans-serif; }
+</style>
 </head>
 
-<body class="bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900 flex items-center justify-center min-h-screen">
+<body class="bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900 min-h-screen flex items-center justify-center text-white">
 
-<div class="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md">
+<div class="bg-white text-indigo-900 p-8 rounded-xl shadow-2xl w-full max-w-md">
 
-  <h2 class="text-2xl font-bold text-center mb-6">Login to Nexora Academy</h2>
+  <h2 class="text-3xl font-bold text-center mb-6">Login to Nexora</h2>
 
+  <!-- Email Login -->
   <input id="email" type="email" placeholder="Email"
-    class="w-full p-3 mb-3 border rounded-lg">
+    class="w-full mb-4 p-3 rounded border">
 
   <input id="password" type="password" placeholder="Password"
-    class="w-full p-3 mb-4 border rounded-lg">
+    class="w-full mb-4 p-3 rounded border">
 
-  <button id="emailLoginBtn"
-    class="w-full bg-indigo-600 text-white p-3 rounded-lg mb-3">
+  <button onclick="emailLogin()"
+    class="w-full bg-indigo-600 text-white py-2 rounded-lg mb-4 hover:bg-indigo-700 transition">
     Login with Email
   </button>
 
-  <div class="text-center text-gray-500 mb-3">OR</div>
+  <div class="text-center mb-4">OR</div>
 
-  <button id="googleLoginBtn"
-    class="w-full bg-red-500 text-white p-3 rounded-lg mb-4">
-    Continue with Google
+  <!-- Google Login -->
+  <button onclick="googleLogin()"
+    class="w-full bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition">
+    Login with Google
   </button>
 
-  <input id="phone" type="text" placeholder="Phone (+233...)"
-    class="w-full p-3 mb-3 border rounded-lg">
-
-  <div id="recaptcha-container" class="mb-3"></div>
-
-  <button id="phoneLoginBtn"
-    class="w-full bg-green-500 text-white p-3 rounded-lg">
-    Login with Phone
-  </button>
-
-  <p id="message" class="text-red-500 text-sm mt-4 text-center"></p>
+  <p id="error" class="text-red-600 text-sm mt-4 text-center"></p>
 
 </div>
 
+<!-- Firebase -->
 <script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getAuth, signInWithPopup, GoogleAuthProvider,
+         signInWithEmailAndPassword,
+         onAuthStateChanged } 
+from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithRedirect,
-  getRedirectResult,
-  RecaptchaVerifier,
-  signInWithPhoneNumber,
-  onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-
-// 🔥 Firebase Config
 const firebaseConfig = {
   apiKey: "AIzaSyAo-EDgZOxuUY_YUKijv2mRPiyZv-ABioY",
   authDomain: "nexora-academy-c4fd9.firebaseapp.com",
   projectId: "nexora-academy-c4fd9",
-  storageBucket: "nexora-academy-c4fd9.firebasestorage.app",
+  storageBucket: "nexora-academy-c4fd9.appspot.com",
   messagingSenderId: "56132609079",
   appId: "1:56132609079:web:a162000d02a9ea20a98bb2"
 };
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const message = document.getElementById("message");
+const provider = new GoogleAuthProvider();
 
+window.googleLogin = function() {
+  signInWithPopup(auth, provider)
+    .then(() => {
+      window.location.href = "forms.html";
+    })
+    .catch((error) => {
+      document.getElementById("error").innerText = error.message;
+    });
+};
 
-// ================= EMAIL LOGIN =================
-document.getElementById("emailLoginBtn").addEventListener("click", () => {
+window.emailLogin = function() {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
   signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      finishLogin(userCredential.user);
+    .then(() => {
+      window.location.href = "forms.html";
     })
-    .catch(error => message.innerText = error.message);
-});
+    .catch((error) => {
+      document.getElementById("error").innerText = error.message;
+    });
+};
 
-
-// ================= GOOGLE LOGIN (REDIRECT SAFE) =================
-document.getElementById("googleLoginBtn").addEventListener("click", () => {
-  const provider = new GoogleAuthProvider();
-  signInWithRedirect(auth, provider);
-});
-
-
-// Handle redirect result
-getRedirectResult(auth)
-  .then((result) => {
-    if (result && result.user) {
-      finishLogin(result.user);
-    }
-  })
-  .catch(error => console.log(error));
-
-
-// ================= PHONE LOGIN =================
-document.getElementById("phoneLoginBtn").addEventListener("click", () => {
-
-  const phoneNumber = document.getElementById("phone").value;
-
-  window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
-    size: 'normal'
-  });
-
-  signInWithPhoneNumber(auth, phoneNumber, window.recaptchaVerifier)
-    .then((confirmationResult) => {
-      const code = prompt("Enter OTP:");
-      return confirmationResult.confirm(code);
-    })
-    .then((userCredential) => {
-      finishLogin(userCredential.user);
-    })
-    .catch(error => message.innerText = error.message);
-});
-
-
-// ================= FINISH LOGIN =================
-function finishLogin(user) {
-  localStorage.setItem("nexoraUID", user.uid);
-  window.location.href = "forms.html";
-}
-
-
-// ================= AUTO LOGIN CHECK =================
+// If already logged in
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    localStorage.setItem("nexoraUID", user.uid);
     window.location.href = "forms.html";
   }
 });
-
 </script>
 
 </body>
